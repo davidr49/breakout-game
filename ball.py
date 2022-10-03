@@ -9,9 +9,9 @@ class Ball(Turtle):
         self.shape('circle')
         self.penup()
         self.startpos = random.randint(-400, 400)
-        self.goto(self.startpos, 0 )
-        self.x_move=-0.75
-        self.y_move=-0.75
+        self.goto(self.startpos, 0)
+        self.x_move=-4.5
+        self.y_move=-4.5
 
 
     def move(self):
@@ -26,4 +26,4 @@ class Ball(Turtle):
         self.x_move *= -1
 
     def ball_reset(self):
-        self.goto(self.startpos,0)
+        self.goto(self.startpos, 0)

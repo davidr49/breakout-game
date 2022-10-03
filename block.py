@@ -22,6 +22,7 @@ class Block(Turtle):
         super().__init__()
         self.block_list = []
         self.start_block()
+        self.level_over = False
 
     def start_block(self):
         for position in block_positions:
@@ -36,3 +37,22 @@ class Block(Turtle):
         new_block.showturtle()
         new_block.goto(position)
         self.block_list.append(new_block)
+
+    def reset_blocks(self):
+        global block_positions
+        self.block_list.clear()
+        block_positions.clear()
+        y_cor = 200
+        x_cor = -400
+        for n in range(4):
+            for n in range(11):
+                block_positions.append((x_cor, y_cor))
+                x_cor += 75
+            y_cor -= 50
+            x_cor = -400
+        self.start_block()
+
+    def check_blocks(self):
+        for blocks in self.block_list:
+            if self.block_list.count(blocks) < 1:
+                self.level_over = True

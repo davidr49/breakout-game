@@ -21,3 +21,6 @@ class Bumper(Turtle):
     def left(self):
         new_left = self.xcor() - MOVEMENT_SPEED
         self.goto(new_left, self.ycor())
+
+    def bumper_reset(self):
+        self.goto(0, -205)

@@ -5,9 +5,6 @@ from ball import Ball
 from scoreboard import Scoreboard
 import time
 
-#end game, reset functions needed
-
-
 
 screen = Screen()
 screen.setup(width=900, height=600)
@@ -30,19 +27,29 @@ time.sleep(1)
 game_on = True
 while game_on:
     screen.update()
+    time.sleep(0.01)
     ball.move()
 
     if ball.distance(bumper) < 90 and ball.ycor() < -190:
         ball.bounce()
+        time.sleep(0.01)
 
     if ball.ycor() > 250:
         ball.bounce()
+        time.sleep(0.01)
 
     if ball.xcor() < -430 or ball.xcor() > 430:
         ball.wall_bounce()
+        time.sleep(0.01)
 
     if ball.ycor() < -210:
+        for blocks in block.block_list:
+            blocks.hideturtle()
+            blocks.clear()
+        block.reset_blocks()
+        scoreboard.reset_scoreboard()
         ball.ball_reset()
+        bumper.bumper_reset()
         screen.update()
         time.sleep(1)
 
@@ -53,8 +60,15 @@ while game_on:
             blocks.clear()
             scoreboard.add_point()
             ball.bounce()
+            block.check_blocks()
 
-    # if block.block_list.count() < 1:
+    if block.level_over:
+        block.reset_blocks()
+        ball.ball_reset()
+        bumper.bumper_reset()
+        screen.update()
+        time.sleep(1)
+
 
 
 screen.exitonclick()
