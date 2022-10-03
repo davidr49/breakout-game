@@ -3,14 +3,14 @@ import random
 
 block_positions = []
 y_cor = 200
-x_cor = -400
+x_cor = -380
 
 for n in range(4):
     for n in range(11):
         block_positions.append((x_cor, y_cor))
         x_cor += 75
     y_cor -= 50
-    x_cor = -400
+    x_cor = -380
 
 color_list = ['blue', 'green', 'yellow', 'gold', 'red', 'purple', 'silver', 'orange', 'maroon','violet','magenta','navy',
               'skyblue','cyan','turquoise','lightgreen','green','darkgreen', 'chocolate','brown','gray']
